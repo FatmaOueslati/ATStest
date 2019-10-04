@@ -1,1 +1,30 @@
-<p>liste-product works!</p>
+<p>Liste Products </p>
+
+<div class="card-body table-responsive">
+  <table class="table table-hover">
+    <thead class="text-primary">
+    <th>Product Name</th>
+    <th>Category</th>
+    <th> Price </th>
+    <th> color </th>
+
+
+
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of ProductListe | paginate: { id: 'listing_pagination',
+                                                      itemsPerPage: 20,
+                                                      currentPage: page,
+                                                      totalItems: 500 } ">
+      <td>{{p.productName }} </td>
+      <td>{{p.category}}</td>
+      <td>{{p.price}} </td>
+      <td > {{p.access_status}} </td>
+      <td> {{p.color}} </td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
